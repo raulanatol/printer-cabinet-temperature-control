@@ -10,4 +10,4 @@ sudo systemctl daemon-reload
 sudo systemctl enable cabinet-control.service
 sudo systemctl start cabinet-control.service
 
-echo "Installed 🤘!"
+echo "Installed!"
