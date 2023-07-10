@@ -1,9 +1,16 @@
 #!/usr/bin/python
 from time import sleep
+from TemperatureSensor import TemperatureSensor
+
+sensor = TemperatureSensor(4)
 
 try:
     while True:
-        print("Hello world")
-        sleep(60)
+        sensor.read()
+        print("===================")
+        print("Temperature={0:0.1f}*C").format(sensor.temperature)
+        print("Humidity={1:0.1f}%").format(sensor.humidity)
+        print("===================")
+        sleep(5)
 except KeyboardInterrupt as e:
     print("Stopping...")
