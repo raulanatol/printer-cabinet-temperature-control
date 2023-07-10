@@ -1,6 +1,14 @@
 # Printer cabinet temperature control
 
+## How to install
 
+Inside the raspberry (using ssh)
+
+### Install as service
+
+```shell
+make install-as-service
+```
 
 ## References
 
