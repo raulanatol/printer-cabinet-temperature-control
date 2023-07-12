@@ -3,7 +3,7 @@ from time import sleep
 
 from modules.TemperatureSensor import TemperatureSensor
 from modules.LCD import LCD
-from modules.Fan import Fan
+from modules.Fan import Fan, FanStatus
 
 # ----
 TEMPERATURE_SENSOR_PORT = 4
@@ -41,15 +41,16 @@ def control_threshold():
         lcd.draw_string('Starting fan MEDIUM', 1)
         return
 
-    fan.stop()
-    lcd.clear()
-    lcd.draw_string('Stopping fan', 1)
+    if fan.current_status != FanStatus.STOP:
+        fan.stop()
+        lcd.clear()
+        lcd.draw_string('Stopping fan', 1)
 
 
 def main():
     try:
         while True:
-            temperatureSensor.read()
+            # temperatureSensor.read()
             print_measurement()
             control_threshold()
             sleep(5)
