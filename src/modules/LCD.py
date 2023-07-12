@@ -1,4 +1,4 @@
-from src.drivers import RPi_I2C_driver
+from drivers import RPi_I2C_driver
 
 
 class LCD:
@@ -7,5 +7,5 @@ class LCD:
     def clear(self):
         self.driver.lcd_clear()
 
-    def draw_string(self, value, row, column):
-        self.driver.lcd_draw_string_pos(value, row, column)
+    def draw_string(self, value, row):
+        self.driver.lcd_display_string(value, row)

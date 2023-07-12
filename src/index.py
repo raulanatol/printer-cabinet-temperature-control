@@ -23,23 +23,27 @@ def print_measurement():
     print(temperature_word)
     print(humidity_word)
     print('===================')
-    lcd.draw_string(temperature_word, 0, 0)
-    lcd.draw_string(humidity_word, 0, 0)
+    lcd.clear()
+    lcd.draw_string(temperature_word, 1)
+    lcd.draw_string(humidity_word, 2)
 
 
 def control_threshold():
     if temperatureSensor.temperature > HIGH_TEMPERATURE:
         fan.start_high()
-        lcd.draw_string('Starting fan HIGH', 0, 0)
+        lcd.clear()
+        lcd.draw_string('Starting fan HIGH', 1)
         return
 
     if temperatureSensor.temperature > MEDIUM_TEMPERATURE:
         fan.start_medium()
-        lcd.draw_string('Starting fan MEDIUM', 0, 0)
+        lcd.clear()
+        lcd.draw_string('Starting fan MEDIUM', 1)
         return
 
     fan.stop()
-    lcd.draw_string('Stopping fan', 0, 0)
+    lcd.clear()
+    lcd.draw_string('Stopping fan', 1)
 
 
 def main():
