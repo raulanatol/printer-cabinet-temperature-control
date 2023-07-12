@@ -1,4 +1,5 @@
-import RPi_I2C_driver
+from src.drivers import RPi_I2C_driver
+
 
 class LCD:
     driver = RPi_I2C_driver.lcd()
