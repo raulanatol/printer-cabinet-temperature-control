@@ -1,5 +1,6 @@
 import Adafruit_DHT as dht
 
+
 class TemperatureSensor:
     """The DHT sensor"""
     port = 4

@@ -40,4 +40,4 @@ https://www.instructables.com/Raspberry-Pi-Tutorial-How-to-Use-the-DHT-22/
 ### I2C LCD 1602
 
 https://raspberrypilife.com/how-to-use-the-i2c-lcd-1602-with-the-raspberry-pi/
-
+https://gist.github.com/DenisFromHR/cc863375a6e19dce359d
