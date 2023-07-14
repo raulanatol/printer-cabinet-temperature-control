@@ -1,5 +1,11 @@
 # Printer cabinet temperature control
 
+## Pre-requisites
+
+```sh
+sudo apt-get -y install python-rpi.gpio
+```
+
 ## How to install
 
 Inside the raspberry (using ssh)

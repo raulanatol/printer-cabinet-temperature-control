@@ -1,7 +1,13 @@
 from enum import Enum
-from gpiozero import LED
+import RPi.GPIO as GPIO
 
-fan = LED(11)
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+GPIO.setup(24, GPIO.OUT)
+fan = GPIO.PWM(24, 100)
+fan.start(0)
+
 
 class FanStatus(Enum):
     STOP = 0
@@ -15,17 +21,17 @@ class Fan:
     def start_high(self):
         if self.current_status != FanStatus.HIGH:
             print("Starting fan - High")
-            fan.on()
+            fan.ChangeDutyCycle(100)
             self.current_status = FanStatus.HIGH
 
     def start_medium(self):
         if self.current_status != FanStatus.MEDIUM:
             print("Starting fan - Medium")
-            fan.on()
+            fan.ChangeDutyCycle(50)
             self.current_status = FanStatus.MEDIUM
 
     def stop(self):
         if self.current_status != FanStatus.STOP:
             print("Stopping fan")
-            fan.off()
+            fan.ChangeDutyCycle(0)
             self.current_status = FanStatus.STOP
