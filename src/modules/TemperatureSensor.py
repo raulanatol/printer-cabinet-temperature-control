@@ -12,8 +12,12 @@ class TemperatureSensor:
         self.port = port
 
     def read(self):
-        self.temperature = self.sensor.temperature
-        self.humidity = self.humidity
+        try:
+            self.temperature = self.sensor.temperature
+            self.humidity = self.sensor.humidity
+        except RuntimeError as error:
+            # Errors happen fairly often, DHT's are hard to read, just keep going
+            print(error.args[0])
 
     def exit(self):
         self.sensor.exit()
