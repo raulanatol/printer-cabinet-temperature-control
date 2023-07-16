@@ -51,17 +51,11 @@ def control_threshold():
 def main():
     try:
         while True:
-            # temperatureSensor.read()
+            temperatureSensor.read()
             print_measurement()
             control_threshold()
             sleep(5)
-    except RuntimeError as error:
-        print(error.args[0])
-        time.sleep(2)
-        continue
     except KeyboardInterrupt as e:
         print("Stopping...")
-    except Exception as error:
-        raise error
 
 main()
