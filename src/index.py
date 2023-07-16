@@ -1,7 +1,8 @@
 #!/usr/bin/python
-from time import sleep
-
+import RPi.GPIO as GPIO
 import board
+
+from time import sleep
 from modules.TemperatureSensor import TemperatureSensor
 from modules.LCD import LCD
 from modules.Fan import Fan, FanStatus
