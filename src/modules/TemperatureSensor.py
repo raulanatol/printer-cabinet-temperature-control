@@ -14,3 +14,6 @@ class TemperatureSensor:
     def read(self):
         self.temperature = self.sensor.temperature
         self.humidity = self.humidity
+
+    def exit(self):
+        self.sensor.exit()

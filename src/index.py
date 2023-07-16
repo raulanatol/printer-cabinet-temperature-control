@@ -57,5 +57,7 @@ def main():
             sleep(5)
     except KeyboardInterrupt as e:
         print("Stopping...")
+        temperatureSensor.exit()
+
 
 main()
