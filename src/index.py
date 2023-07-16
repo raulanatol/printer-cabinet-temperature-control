@@ -5,15 +5,14 @@ import board
 from time import sleep
 from modules.TemperatureSensor import TemperatureSensor
 from modules.LCD import LCD
-from modules.Fan import Fan, FanStatus
+from modules.Fan import Fan
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 # ----
 TEMPERATURE_SENSOR_PORT = 4
-MEDIUM_TEMPERATURE = 25
-HIGH_TEMPERATURE = 30
+THRESHOLD = 40
 # ----
 
 # Start modules
@@ -34,19 +33,14 @@ def print_measurement():
 
 
 def control_threshold():
-    if temperatureSensor.temperature > HIGH_TEMPERATURE:
-        fan.start_high()
-        lcd.clear()
-        lcd.draw_string('Starting fan HIGH', 1)
+    if temperatureSensor.temperature > THRESHOLD:
+        if not fan.is_running:
+            fan.start()
+            lcd.clear()
+            lcd.draw_string('Starting fan', 1)
         return
 
-    if temperatureSensor.temperature > MEDIUM_TEMPERATURE:
-        fan.start_medium()
-        lcd.clear()
-        lcd.draw_string('Starting fan MEDIUM', 1)
-        return
-
-    if fan.current_status != FanStatus.STOP:
+    if fan.is_running:
         fan.stop()
         lcd.clear()
         lcd.draw_string('Stopping fan', 1)
@@ -62,6 +56,7 @@ def main():
     except KeyboardInterrupt as e:
         print("Stopping...")
         temperatureSensor.exit()
+        fan.stop()
 
 
 main()

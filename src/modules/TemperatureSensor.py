@@ -15,9 +15,9 @@ class TemperatureSensor:
         try:
             self.temperature = self.sensor.temperature
             self.humidity = self.sensor.humidity
-        except RuntimeError as error:
+        except RuntimeError:
             # Errors happen fairly often, DHT's are hard to read, just keep going
-            print(error.args[0])
+            print("-")
 
     def exit(self):
         self.sensor.exit()
