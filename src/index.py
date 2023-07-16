@@ -4,7 +4,7 @@ import board
 
 from time import sleep
 from modules.TemperatureSensor import TemperatureSensor
-from modules.LCD import LCD
+# from modules.LCD import LCD
 from modules.Fan import Fan, FanStatus
 
 GPIO.setmode(GPIO.BOARD)
@@ -18,7 +18,7 @@ HIGH_TEMPERATURE = 30
 
 # Start modules
 temperatureSensor = TemperatureSensor(board.D4)
-lcd = LCD()
+# lcd = LCD()
 fan = Fan()
 
 
@@ -28,28 +28,28 @@ def print_measurement():
     print(temperature_word)
     print(humidity_word)
     print('===================')
-    lcd.clear()
-    lcd.draw_string(temperature_word, 1)
-    lcd.draw_string(humidity_word, 2)
+    # lcd.clear()
+    # lcd.draw_string(temperature_word, 1)
+    # lcd.draw_string(humidity_word, 2)
 
 
 def control_threshold():
     if temperatureSensor.temperature > HIGH_TEMPERATURE:
         fan.start_high()
-        lcd.clear()
-        lcd.draw_string('Starting fan HIGH', 1)
+        # lcd.clear()
+        # lcd.draw_string('Starting fan HIGH', 1)
         return
 
     if temperatureSensor.temperature > MEDIUM_TEMPERATURE:
         fan.start_medium()
-        lcd.clear()
-        lcd.draw_string('Starting fan MEDIUM', 1)
+        # lcd.clear()
+        # lcd.draw_string('Starting fan MEDIUM', 1)
         return
 
     if fan.current_status != FanStatus.STOP:
         fan.stop()
-        lcd.clear()
-        lcd.draw_string('Stopping fan', 1)
+        # lcd.clear()
+        # lcd.draw_string('Stopping fan', 1)
 
 
 def main():
