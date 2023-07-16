@@ -1,8 +1,8 @@
 from enum import Enum
 import RPi.GPIO as GPIO
 
-fan_speed_pin = 24
-fan_power_switch_pin = 11
+fan_speed_pin = 8
+fan_power_switch_pin = 17
 
 GPIO.setup(fan_speed_pin, GPIO.OUT)
 GPIO.setup(fan_power_switch_pin, GPIO.OUT, initial=GPIO.LOW)
