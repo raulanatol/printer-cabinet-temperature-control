@@ -4,9 +4,10 @@ fan_power_switch_pin = 17
 
 GPIO.setup(fan_power_switch_pin, GPIO.OUT, initial=GPIO.LOW)
 
-class Fan:
-    is_running = False\
 
+class Fan:
+    is_running = False
+    
     def stop(self):
         if self.is_running:
             print("Stopping fan")
@@ -15,6 +16,6 @@ class Fan:
 
     def start(self):
         if not self.is_running:
-        print("Starting fan")
-        GPIO.output(fan_power_switch_pin, GPIO.HIGH)
-        self.is_running = True
+            print("Starting fan")
+            GPIO.output(fan_power_switch_pin, GPIO.HIGH)
+            self.is_running = True
