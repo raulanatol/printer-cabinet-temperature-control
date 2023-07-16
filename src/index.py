@@ -1,6 +1,7 @@
 #!/usr/bin/python
 from time import sleep
 
+import board
 from modules.TemperatureSensor import TemperatureSensor
 from modules.LCD import LCD
 from modules.Fan import Fan, FanStatus
@@ -12,7 +13,7 @@ HIGH_TEMPERATURE = 30
 # ----
 
 # Start modules
-temperatureSensor = TemperatureSensor(4)
+temperatureSensor = TemperatureSensor(board.D4)
 lcd = LCD()
 fan = Fan()
 
@@ -54,8 +55,13 @@ def main():
             print_measurement()
             control_threshold()
             sleep(5)
+    except RuntimeError as error:
+        print(error.args[0])
+        time.sleep(2)
+        continue
     except KeyboardInterrupt as e:
         print("Stopping...")
-
+    except Exception as error:
+        raise error
 
 main()

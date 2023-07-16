@@ -2,13 +2,27 @@
 
 ## Pre-requisites
 
+### Enabling I2C1 from terminal
+
+```shell
+sudo raspi-config
+```
+
+Interfacing options > I2C > Enable
+
+```shell
+sudo reboot
+```
+
 ```sh
-sudo apt-get -y install python-rpi.gpio
+sudo apt-get -y install git build-essential libgpiod2 python3-dev python3-openssl python3-rpi.gpio python3-pip python3-smbus
+```
+
+```shell
+pip install -r requirements.txt
 ```
 
 ## How to install
-
-Inside the raspberry (using ssh)
 
 ### Install as service
 
