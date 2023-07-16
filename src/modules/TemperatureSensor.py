@@ -8,7 +8,7 @@ class TemperatureSensor:
     temperature = 0
 
     def __init__(self, port):
-        self.sensor = adafruit_dht.DHT22(port)
+        self.sensor = adafruit_dht.DHT22(port, use_pulseio=True)
         self.port = port
 
     def read(self):
