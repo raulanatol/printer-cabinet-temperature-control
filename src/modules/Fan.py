@@ -4,8 +4,6 @@ import RPi.GPIO as GPIO
 fan_speed_pin = 24
 fan_power_switch_pin = 11
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setwarnings(False)
 GPIO.setup(fan_speed_pin, GPIO.OUT)
 GPIO.setup(fan_power_switch_pin, GPIO.OUT, initial=GPIO.LOW)
 

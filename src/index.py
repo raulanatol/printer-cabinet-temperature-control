@@ -6,6 +6,9 @@ from modules.TemperatureSensor import TemperatureSensor
 from modules.LCD import LCD
 from modules.Fan import Fan, FanStatus
 
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+
 # ----
 TEMPERATURE_SENSOR_PORT = 4
 MEDIUM_TEMPERATURE = 25
