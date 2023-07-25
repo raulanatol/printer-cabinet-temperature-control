@@ -12,7 +12,7 @@ GPIO.setwarnings(False)
 
 # ----
 TEMPERATURE_SENSOR_PORT = 4
-THRESHOLD = 40
+THRESHOLD = 35
 # ----
 
 # Start modules
