@@ -12,7 +12,9 @@ GPIO.setwarnings(False)
 
 # ----
 TEMPERATURE_SENSOR_PORT = 4
-THRESHOLD = 40
+UPPER_THRESHOLD = 40
+LOWER_THRESHOLD = 30
+
 # ----
 
 # Start modules
@@ -33,17 +35,19 @@ def print_measurement():
 
 
 def control_threshold():
-    if temperatureSensor.temperature > THRESHOLD:
+    if temperatureSensor.temperature > UPPER_THRESHOLD:
         if not fan.is_running:
             fan.start()
             lcd.clear()
             lcd.draw_string('Starting fan', 1)
         return
 
-    if fan.is_running:
-        fan.stop()
-        lcd.clear()
-        lcd.draw_string('Stopping fan', 1)
+    if temperatureSensor.temperature < LOWER_THRESHOLD:
+        if fan.is_running:
+            fan.stop()
+            lcd.clear()
+            lcd.draw_string('Stopping fan', 1)
+        return
 
 
 def main():
