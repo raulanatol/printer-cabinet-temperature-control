@@ -4,8 +4,9 @@ After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python /home/pi/printer-cabinet-temperature-control/src/index.py
+ExecStart=/usr/bin/python3 /home/pi/printer-cabinet-temperature-control/src/index.py
 Restart=on-abort
+User=pi
 
 [Install]
 WantedBy=multi-user.target
