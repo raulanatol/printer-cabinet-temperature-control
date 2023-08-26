@@ -50,6 +50,10 @@ Install dependencies
 pip install -r requirements.txt
 ```
 
+## Schematic
+
+![schematic](docs/schematic.png)
+
 ## References
 
 
